@@ -1,0 +1,221 @@
+{
+  "posts": [
+    {
+      "id": "b0001-books-0001",
+      "category": "books",
+      "source": "Atomic Habits · Ch. 2",
+      "createdAt": "2026-11-01T09:00:00Z",
+      "title": "Small habits compound",
+      "body": "Getting 1% better each day adds up to a lot over a year.\n- Tiny changes look trivial on any single day.\n- Over months they stack into large differences.\n👉 Start with a habit you can do in two minutes.",
+      "tags": [
+        "habits",
+        "compounding"
+      ]
+    },
+    {
+      "id": "b0001-books-0002",
+      "category": "books",
+      "source": "Deep Work · Rule 1",
+      "createdAt": "2026-11-01T09:05:00Z",
+      "title": "Schedule your deep work",
+      "body": "Focus is a skill, and it needs a plan.\n- Block fixed hours for hard thinking.\n- Keep shallow tasks in a separate slot.\n👉 Protect one block a day before anything else.",
+      "tags": [
+        "focus",
+        "productivity"
+      ]
+    },
+    {
+      "id": "b0001-books-0003",
+      "category": "books",
+      "source": "Thinking, Fast and Slow · Part 1",
+      "createdAt": "2026-11-01T09:10:00Z",
+      "title": "System 1 and System 2",
+      "body": "Fast intuition is useful, and it is also where biases come from.\n- System 1 answers quickly and by feel.\n- System 2 is slow and only engages when needed.\n👉 When a decision feels too easy, slow down.",
+      "tags": [
+        "cognition",
+        "biases"
+      ]
+    },
+    {
+      "id": "b0001-books-0004",
+      "category": "books",
+      "source": "The Pragmatic Programmer · Topic 8",
+      "createdAt": "2026-11-01T09:15:00Z",
+      "title": "Don't live with broken windows",
+      "body": "Small neglect invites bigger neglect. Fix the small thing today.\n👉 Leave the code a little better than you found it.",
+      "tags": [
+        "craft",
+        "code-quality"
+      ]
+    },
+    {
+      "id": "b0001-sd-0001",
+      "category": "sd",
+      "source": "System Design Interview · Ch. 1",
+      "createdAt": "2026-11-02T09:00:00Z",
+      "title": "Rate limiter: where to put it",
+      "body": "A rate limiter protects services from too many requests. Place it deliberately.\n- Client side: cheap, but easy to bypass.\n- Server or gateway: the usual choice.\n- Middleware in the service: fine for one service.\n👉 Most teams start at the API gateway.",
+      "tags": [
+        "rate-limiting",
+        "api"
+      ]
+    },
+    {
+      "id": "b0001-sd-0002",
+      "category": "sd",
+      "source": "System Design Interview · Ch. 2",
+      "createdAt": "2026-11-02T09:05:00Z",
+      "title": "Back-of-envelope estimates",
+      "body": "Estimates help you see which parts of a design will be hard.\n- Users x requests per user gives QPS.\n- Peak is usually 2–3x average.\n👉 Round the numbers. Precision is not the point.",
+      "tags": [
+        "estimation"
+      ]
+    },
+    {
+      "id": "b0001-sd-0003",
+      "category": "sd",
+      "source": "System Design Interview · Ch. 3",
+      "createdAt": "2026-11-02T09:10:00Z",
+      "title": "Consistent hashing",
+      "body": "Adding or removing a cache node should not remap every key.\n- Place nodes and keys on a ring.\n- Each key goes to the next node clockwise.\n👉 Virtual nodes spread the load more evenly.",
+      "code": "node = ring.next_clockwise(hash(key))",
+      "tags": [
+        "hashing",
+        "caching"
+      ]
+    },
+    {
+      "id": "b0001-sd-0004",
+      "category": "sd",
+      "source": "Designing Data-Intensive Applications · Ch. 5",
+      "createdAt": "2026-11-02T09:15:00Z",
+      "title": "Leader-follower replication",
+      "body": "Replication keeps copies of data on several machines.\n- Writes go to the leader.\n- Followers replicate the change log.\n👉 Ask yourself what happens when the leader dies.",
+      "tags": [
+        "replication",
+        "ddia"
+      ]
+    },
+    {
+      "id": "b0001-sd-0005",
+      "category": "sd",
+      "source": "Design a URL Shortener · Walkthrough",
+      "createdAt": "2026-11-03T09:00:00Z",
+      "title": "Designing a URL shortener",
+      "body": "A small system that shows the core trade-offs of storage, IDs, and reads.\n👉 Swipe through the walkthrough.",
+      "tags": [
+        "walkthrough",
+        "storage"
+      ],
+      "slides": [
+        {
+          "title": "The problem",
+          "body": "Turn a long URL into a short code and redirect when it is opened."
+        },
+        {
+          "title": "Scale estimate",
+          "body": "- 100M new URLs a month\n- Read-heavy: about 100:1 reads to writes"
+        },
+        {
+          "title": "Generating the code",
+          "body": "Options: hash the URL, use a counter with base62, or pre-generate keys.",
+          "code": "code = base62(counter.next())"
+        },
+        {
+          "title": "Storage and reads",
+          "body": "A key-value store fits. Cache hot codes in front of it."
+        },
+        {
+          "title": "Takeaway",
+          "body": "**Read-heavy systems** pay off when you cache the hot path first."
+        }
+      ]
+    },
+    {
+      "id": "b0001-lld-0001",
+      "category": "lld",
+      "source": "Design Patterns · Strategy",
+      "createdAt": "2026-11-04T09:00:00Z",
+      "title": "Strategy pattern in one example",
+      "body": "Swap an algorithm without changing the code that uses it.\n- Define an interface for the behavior.\n- Inject the concrete strategy.\n👉 Think of payment methods or pricing rules.",
+      "code": "class Checkout:\n    def __init__(self, pricing): self.pricing = pricing",
+      "tags": [
+        "patterns",
+        "strategy"
+      ]
+    },
+    {
+      "id": "b0001-lld-0002",
+      "category": "lld",
+      "source": "LLD Interview · LRU Cache",
+      "createdAt": "2026-11-04T09:05:00Z",
+      "title": "LRU cache: the two structures",
+      "body": "Get and put both need O(1).\n- A hash map finds the node.\n- A doubly linked list tracks recency.\n👉 Evict from the tail, move hits to the head.",
+      "tags": [
+        "lld",
+        "cache",
+        "data-structures"
+      ]
+    },
+    {
+      "id": "b0001-lld-0003",
+      "category": "lld",
+      "source": "LLD Interview · Parking Lot",
+      "createdAt": "2026-11-04T09:10:00Z",
+      "title": "Parking lot: model the spots",
+      "body": "Start with the entities before you write classes.\n- Lot, Level, Spot, Vehicle, Ticket.\n- Spot size matches vehicle size.\n👉 Keep allocation logic out of the Vehicle class.",
+      "tags": [
+        "lld",
+        "modeling"
+      ]
+    },
+    {
+      "id": "b0001-ai-0001",
+      "category": "ai",
+      "source": "Agentic patterns · Reflection",
+      "createdAt": "2026-11-05T09:00:00Z",
+      "title": "Reflection: let the model check its work",
+      "body": "A second pass can catch errors the first pass missed.\n- Generate a draft.\n- Critique it against clear criteria.\n- Revise.\n👉 Only useful when the critique has a concrete rubric.",
+      "tags": [
+        "agents",
+        "reflection"
+      ]
+    },
+    {
+      "id": "b0001-ai-0002",
+      "category": "ai",
+      "source": "RAG · Retrieval basics",
+      "createdAt": "2026-11-05T09:05:00Z",
+      "title": "RAG starts with chunking",
+      "body": "Retrieval quality depends on how you split documents.\n- Too big: the answer gets diluted.\n- Too small: the context gets lost.\n👉 Measure retrieval hit rate before you tune the prompt.",
+      "tags": [
+        "rag",
+        "retrieval"
+      ]
+    },
+    {
+      "id": "b0001-ai-0003",
+      "category": "ai",
+      "source": "LLM inference · KV cache",
+      "createdAt": "2026-11-05T09:10:00Z",
+      "title": "Why the KV cache matters",
+      "body": "During decoding, past keys and values are reused instead of recomputed.\n- Saves compute per generated token.\n- Costs memory that grows with context length.\n👉 Long context is often limited by memory, not compute.",
+      "tags": [
+        "inference",
+        "llm"
+      ]
+    },
+    {
+      "id": "b0001-ai-0004",
+      "category": "ai",
+      "source": "Vision models · Patch embeddings",
+      "createdAt": "2026-11-06T09:00:00Z",
+      "title": "How ViT sees an image",
+      "body": "A vision transformer treats an image as a sequence of patches.\n- Split the image into fixed-size patches.\n- Flatten each patch and project it to a vector.\n👉 Patch size trades detail for sequence length.",
+      "tags": [
+        "vision",
+        "transformers"
+      ]
+    }
+  ]
+}
