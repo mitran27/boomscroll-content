@@ -1,220 +1,214 @@
 {
   "posts": [
     {
-      "id": "b0001-books-0001",
-      "category": "books",
-      "source": "Atomic Habits · Ch. 2",
-      "createdAt": "2026-11-01T09:00:00Z",
-      "title": "Small habits compound",
-      "body": "Getting 1% better each day adds up to a lot over a year.\n- Tiny changes look trivial on any single day.\n- Over months they stack into large differences.\n👉 Start with a habit you can do in two minutes.",
-      "tags": [
-        "habits",
-        "compounding"
-      ]
-    },
-    {
-      "id": "b0001-books-0002",
-      "category": "books",
-      "source": "Deep Work · Rule 1",
-      "createdAt": "2026-11-01T09:05:00Z",
-      "title": "Schedule your deep work",
-      "body": "Focus is a skill, and it needs a plan.\n- Block fixed hours for hard thinking.\n- Keep shallow tasks in a separate slot.\n👉 Protect one block a day before anything else.",
-      "tags": [
-        "focus",
-        "productivity"
-      ]
-    },
-    {
-      "id": "b0001-books-0003",
-      "category": "books",
-      "source": "Thinking, Fast and Slow · Part 1",
-      "createdAt": "2026-11-01T09:10:00Z",
-      "title": "System 1 and System 2",
-      "body": "Fast intuition is useful, and it is also where biases come from.\n- System 1 answers quickly and by feel.\n- System 2 is slow and only engages when needed.\n👉 When a decision feels too easy, slow down.",
-      "tags": [
-        "cognition",
-        "biases"
-      ]
-    },
-    {
-      "id": "b0001-books-0004",
-      "category": "books",
-      "source": "The Pragmatic Programmer · Topic 8",
-      "createdAt": "2026-11-01T09:15:00Z",
-      "title": "Don't live with broken windows",
-      "body": "Small neglect invites bigger neglect. Fix the small thing today.\n👉 Leave the code a little better than you found it.",
-      "tags": [
-        "craft",
-        "code-quality"
-      ]
-    },
-    {
-      "id": "b0001-sd-0001",
+      "id": "b0001-sd-0101",
       "category": "sd",
-      "source": "System Design Interview · Ch. 1",
-      "createdAt": "2026-11-02T09:00:00Z",
-      "title": "Rate limiter: where to put it",
-      "body": "A rate limiter protects services from too many requests. Place it deliberately.\n- Client side: cheap, but easy to bypass.\n- Server or gateway: the usual choice.\n- Middleware in the service: fine for one service.\n👉 Most teams start at the API gateway.",
+      "source": "DDIA · Ch. 7 Transactions",
+      "createdAt": "2026-11-10T09:00:00Z",
+      "title": "Snapshot isolation still allows write skew",
+      "body": "Snapshot isolation stops dirty reads and lost updates, but two transactions can read the same snapshot and write disjoint rows that together break an invariant.\n- Classic case: two doctors both check that another is on call, then both go off call.\n- Fixes: `SELECT FOR UPDATE` on a shared row, materialized conflicts, or serializable isolation (SSI).\n👉 Ask which invariant spans more than one row before you pick an isolation level.",
       "tags": [
-        "rate-limiting",
-        "api"
-      ]
-    },
-    {
-      "id": "b0001-sd-0002",
-      "category": "sd",
-      "source": "System Design Interview · Ch. 2",
-      "createdAt": "2026-11-02T09:05:00Z",
-      "title": "Back-of-envelope estimates",
-      "body": "Estimates help you see which parts of a design will be hard.\n- Users x requests per user gives QPS.\n- Peak is usually 2–3x average.\n👉 Round the numbers. Precision is not the point.",
-      "tags": [
-        "estimation"
-      ]
-    },
-    {
-      "id": "b0001-sd-0003",
-      "category": "sd",
-      "source": "System Design Interview · Ch. 3",
-      "createdAt": "2026-11-02T09:10:00Z",
-      "title": "Consistent hashing",
-      "body": "Adding or removing a cache node should not remap every key.\n- Place nodes and keys on a ring.\n- Each key goes to the next node clockwise.\n👉 Virtual nodes spread the load more evenly.",
-      "code": "node = ring.next_clockwise(hash(key))",
-      "tags": [
-        "hashing",
-        "caching"
-      ]
-    },
-    {
-      "id": "b0001-sd-0004",
-      "category": "sd",
-      "source": "Designing Data-Intensive Applications · Ch. 5",
-      "createdAt": "2026-11-02T09:15:00Z",
-      "title": "Leader-follower replication",
-      "body": "Replication keeps copies of data on several machines.\n- Writes go to the leader.\n- Followers replicate the change log.\n👉 Ask yourself what happens when the leader dies.",
-      "tags": [
-        "replication",
+        "transactions",
+        "isolation",
         "ddia"
       ]
     },
     {
-      "id": "b0001-sd-0005",
+      "id": "b0001-sd-0102",
       "category": "sd",
-      "source": "Design a URL Shortener · Walkthrough",
-      "createdAt": "2026-11-03T09:00:00Z",
-      "title": "Designing a URL shortener",
-      "body": "A small system that shows the core trade-offs of storage, IDs, and reads.\n👉 Swipe through the walkthrough.",
+      "source": "DDIA · Ch. 3 Storage engines",
+      "createdAt": "2026-11-10T09:05:00Z",
+      "title": "Write amplification is the real LSM cost",
+      "body": "LSM trees are fast at writes because they append and compact later. The price is that one logical write is rewritten many times.\n- Leveled compaction: lower read and space amplification, higher write amplification.\n- Size-tiered: cheaper writes, more files to read and more space used.\n👉 Pick the compaction strategy from your read-to-write ratio, not from benchmarks.",
       "tags": [
-        "walkthrough",
-        "storage"
+        "lsm",
+        "storage",
+        "compaction"
+      ]
+    },
+    {
+      "id": "b0001-sd-0103",
+      "category": "sd",
+      "source": "Kafka internals · Delivery semantics",
+      "createdAt": "2026-11-10T09:10:00Z",
+      "title": "Exactly-once is an end-to-end property",
+      "body": "Idempotent producers and transactions give exactly-once inside Kafka. They do not cover the side effect you run in your consumer.\n- Commit the offset and the state change in the same database transaction.\n- Or make the handler idempotent with a dedupe key.\n👉 If the sink is not transactional, the guarantee is at-least-once plus idempotency.",
+      "tags": [
+        "kafka",
+        "delivery",
+        "idempotency"
+      ]
+    },
+    {
+      "id": "b0001-sd-0104",
+      "category": "sd",
+      "source": "Consensus · Raft log",
+      "createdAt": "2026-11-11T09:00:00Z",
+      "title": "Why Raft only commits entries from the current term",
+      "body": "A leader must not count replicas for entries from earlier terms when deciding commit. A later leader can overwrite them.\n- Commit happens only when an entry from the current term is replicated to a majority.\n- Earlier entries then commit indirectly.\n👉 This rule is the one most reimplementations get wrong.",
+      "tags": [
+        "raft",
+        "consensus"
+      ]
+    },
+    {
+      "id": "b0001-sd-0105",
+      "category": "sd",
+      "source": "Designing a notification fan-out · Walkthrough",
+      "createdAt": "2026-11-11T09:05:00Z",
+      "title": "Fan-out at celebrity scale",
+      "body": "Pushing one post to 50M followers on write blows up the write path. Pulling on read blows up latency. Real systems do both, split by follower count.\n👉 Swipe for the hybrid design.",
+      "tags": [
+        "fan-out",
+        "feeds",
+        "walkthrough"
       ],
       "slides": [
         {
-          "title": "The problem",
-          "body": "Turn a long URL into a short code and redirect when it is opened."
+          "title": "The two extremes",
+          "body": "- Fan-out on write: fast reads, huge write burst per celebrity post\n- Fan-out on read: cheap writes, merge cost paid by every reader"
         },
         {
-          "title": "Scale estimate",
-          "body": "- 100M new URLs a month\n- Read-heavy: about 100:1 reads to writes"
+          "title": "Where it breaks",
+          "body": "A single celebrity can produce 50M queue messages. Your queues and workers become the bottleneck, not the database."
         },
         {
-          "title": "Generating the code",
-          "body": "Options: hash the URL, use a counter with base62, or pre-generate keys.",
-          "code": "code = base62(counter.next())"
+          "title": "Hybrid by threshold",
+          "body": "Users under a follower threshold are pushed to follower timelines. Celebrity posts are pulled and merged at read time.",
+          "code": "if followers(author) < T: push(post, followers)\nelse: mark_celebrity(post)  # merged at read"
         },
         {
-          "title": "Storage and reads",
-          "body": "A key-value store fits. Cache hot codes in front of it."
+          "title": "Protect the merge",
+          "body": "Cache the celebrity timeline slices per user. Bound the merge to the last N posts so read cost stays flat."
         },
         {
           "title": "Takeaway",
-          "body": "**Read-heavy systems** pay off when you cache the hot path first."
+          "body": "**Pick the write or read path per segment.** One global strategy fails at one end of the distribution."
         }
       ]
     },
     {
-      "id": "b0001-lld-0001",
-      "category": "lld",
-      "source": "Design Patterns · Strategy",
-      "createdAt": "2026-11-04T09:00:00Z",
-      "title": "Strategy pattern in one example",
-      "body": "Swap an algorithm without changing the code that uses it.\n- Define an interface for the behavior.\n- Inject the concrete strategy.\n👉 Think of payment methods or pricing rules.",
-      "code": "class Checkout:\n    def __init__(self, pricing): self.pricing = pricing",
+      "id": "b0001-sd-0106",
+      "category": "sd",
+      "source": "Consistent hashing · Bounded loads",
+      "createdAt": "2026-11-12T09:00:00Z",
+      "title": "Consistent hashing with bounded loads",
+      "body": "Plain consistent hashing gives balanced keys on average, but a hot key or uneven node still overloads one node.\n- Cap each node at a load factor, such as 1.25 times the mean.\n- A key that finds its node full moves to the next node on the ring.\n👉 Lets you smooth load without losing most of the cache locality.",
       "tags": [
-        "patterns",
-        "strategy"
+        "hashing",
+        "load-balancing"
       ]
     },
     {
-      "id": "b0001-lld-0002",
+      "id": "b0001-lld-0101",
       "category": "lld",
-      "source": "LLD Interview · LRU Cache",
-      "createdAt": "2026-11-04T09:05:00Z",
-      "title": "LRU cache: the two structures",
-      "body": "Get and put both need O(1).\n- A hash map finds the node.\n- A doubly linked list tracks recency.\n👉 Evict from the tail, move hits to the head.",
+      "source": "LLD · Thread-safe singleton",
+      "createdAt": "2026-11-12T09:05:00Z",
+      "title": "Double-checked locking is only right with volatile",
+      "body": "Lazy singletons with double-checked locking look safe. Without a volatile field, a thread can see a partly constructed object.\n- The write to the reference can be reordered before the constructor's writes.\n- `volatile` adds the happens-before edge that makes publication safe.\n👉 Or use the initialization-on-demand holder idiom and skip the locking entirely.",
+      "tags": [
+        "java",
+        "concurrency",
+        "singleton"
+      ]
+    },
+    {
+      "id": "b0001-lld-0102",
+      "category": "lld",
+      "source": "LLD · Rate limiter design",
+      "createdAt": "2026-11-12T09:10:00Z",
+      "title": "Token bucket vs sliding window: pick by burst policy",
+      "body": "Both enforce a rate. They differ in what a burst looks like to the client.\n- Token bucket allows bounded bursts up to bucket size.\n- Sliding window log is exact but memory heavy; sliding counter approximates it.\n👉 State the burst policy in the interview before the data structure.",
       "tags": [
         "lld",
-        "cache",
-        "data-structures"
+        "rate-limiting"
       ]
     },
     {
-      "id": "b0001-lld-0003",
+      "id": "b0001-lld-0103",
       "category": "lld",
-      "source": "LLD Interview · Parking Lot",
-      "createdAt": "2026-11-04T09:10:00Z",
-      "title": "Parking lot: model the spots",
-      "body": "Start with the entities before you write classes.\n- Lot, Level, Spot, Vehicle, Ticket.\n- Spot size matches vehicle size.\n👉 Keep allocation logic out of the Vehicle class.",
+      "source": "LLD · Observer with lifetimes",
+      "createdAt": "2026-11-13T09:00:00Z",
+      "title": "Observers that outlive their subscribers leak",
+      "body": "A subject holding strong references to listeners keeps dead UI or service objects alive.\n- Hold listeners through weak references, or require explicit unsubscribe.\n- Notify over a snapshot copy so listeners can unsubscribe during dispatch.\n👉 Iterating the live list while a listener removes itself is a classic ConcurrentModification bug.",
       "tags": [
         "lld",
-        "modeling"
+        "observer",
+        "memory"
       ]
     },
     {
-      "id": "b0001-ai-0001",
+      "id": "b0001-ai-0101",
       "category": "ai",
-      "source": "Agentic patterns · Reflection",
-      "createdAt": "2026-11-05T09:00:00Z",
-      "title": "Reflection: let the model check its work",
-      "body": "A second pass can catch errors the first pass missed.\n- Generate a draft.\n- Critique it against clear criteria.\n- Revise.\n👉 Only useful when the critique has a concrete rubric.",
-      "tags": [
-        "agents",
-        "reflection"
-      ]
-    },
-    {
-      "id": "b0001-ai-0002",
-      "category": "ai",
-      "source": "RAG · Retrieval basics",
-      "createdAt": "2026-11-05T09:05:00Z",
-      "title": "RAG starts with chunking",
-      "body": "Retrieval quality depends on how you split documents.\n- Too big: the answer gets diluted.\n- Too small: the context gets lost.\n👉 Measure retrieval hit rate before you tune the prompt.",
-      "tags": [
-        "rag",
-        "retrieval"
-      ]
-    },
-    {
-      "id": "b0001-ai-0003",
-      "category": "ai",
-      "source": "LLM inference · KV cache",
-      "createdAt": "2026-11-05T09:10:00Z",
-      "title": "Why the KV cache matters",
-      "body": "During decoding, past keys and values are reused instead of recomputed.\n- Saves compute per generated token.\n- Costs memory that grows with context length.\n👉 Long context is often limited by memory, not compute.",
+      "source": "LLM serving · Paged attention",
+      "createdAt": "2026-11-13T09:05:00Z",
+      "title": "Why PagedAttention fixed KV cache fragmentation",
+      "body": "Preallocating the maximum context per request wastes most of GPU memory. Paging the KV cache into fixed blocks removes that waste.\n- Blocks are allocated on demand and need not be contiguous.\n- Requests that share a prefix can share blocks copy-on-write.\n👉 Throughput gains come from packing more concurrent requests, not from faster math.",
       "tags": [
         "inference",
-        "llm"
+        "kv-cache",
+        "serving"
       ]
     },
     {
-      "id": "b0001-ai-0004",
+      "id": "b0001-ai-0102",
       "category": "ai",
-      "source": "Vision models · Patch embeddings",
-      "createdAt": "2026-11-06T09:00:00Z",
-      "title": "How ViT sees an image",
-      "body": "A vision transformer treats an image as a sequence of patches.\n- Split the image into fixed-size patches.\n- Flatten each patch and project it to a vector.\n👉 Patch size trades detail for sequence length.",
+      "source": "LLM inference · Speculative decoding",
+      "createdAt": "2026-11-14T09:00:00Z",
+      "title": "Speculative decoding keeps the output distribution exact",
+      "body": "A small draft model proposes several tokens. The large model verifies them in one forward pass.\n- Accepted tokens use rejection sampling, so the distribution matches the large model.\n- Speedup depends on the acceptance rate, not on the draft model's raw quality alone.\n👉 A draft that is cheap and well aligned beats a bigger draft.",
+      "tags": [
+        "inference",
+        "decoding"
+      ]
+    },
+    {
+      "id": "b0001-ai-0103",
+      "category": "ai",
+      "source": "RAG · Retrieval quality",
+      "createdAt": "2026-11-14T09:05:00Z",
+      "title": "Measure retrieval before you touch the prompt",
+      "body": "Most RAG failures are retrieval failures that look like generation failures.\n- Build a labelled set of queries with gold chunks.\n- Track recall@k and MRR for retrieval separately from answer quality.\n👉 Add a reranker only after recall@k is already high.",
+      "tags": [
+        "rag",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "b0001-ai-0104",
+      "category": "ai",
+      "source": "Vision transformers · Patch size",
+      "createdAt": "2026-11-15T09:00:00Z",
+      "title": "Patch size sets the compute budget of a ViT",
+      "body": "Self-attention cost grows with the square of the token count. Halving the patch side quadruples the tokens and roughly multiplies attention cost by 16.\n- Smaller patches keep fine detail but explode the sequence length.\n- Higher resolution at a fixed patch size costs the same way.\n👉 Choose patch size from the smallest object you must detect, then budget resolution.",
       "tags": [
         "vision",
-        "transformers"
+        "transformers",
+        "compute"
+      ]
+    },
+    {
+      "id": "b0001-books-0101",
+      "category": "books",
+      "source": "Designing Data-Intensive Applications · Ch. 1",
+      "createdAt": "2026-11-15T09:05:00Z",
+      "title": "Reliability is about faults you expect",
+      "body": "A reliable system keeps working correctly when things go wrong, even when faults are common.\n- Faults are inevitable: hardware, software bugs, and human error.\n- Design so that faults are contained and recovery is routine.\n👉 Practice the failure before the incident does.",
+      "tags": [
+        "reliability",
+        "ddia"
+      ]
+    },
+    {
+      "id": "b0001-books-0102",
+      "category": "books",
+      "source": "Thinking, Fast and Slow · Part 3",
+      "createdAt": "2026-11-16T09:00:00Z",
+      "title": "Regression to the mean fools good managers",
+      "body": "Extreme results tend to be followed by less extreme ones, even with no intervention.\n- Praise after a great quarter often precedes a weaker one.\n- Punishment after a bad one often precedes improvement.\n👉 Judge a change by the trend across many periods, not by the last one.",
+      "tags": [
+        "cognition",
+        "decisions"
       ]
     }
   ]
