@@ -1,0 +1,88 @@
+{
+  "posts": [
+    {
+      "id": "linkedin-books-0001",
+      "category": "books",
+      "source": "James Clear · LinkedIn",
+      "createdAt": "2026-11-23T15:00:00Z",
+      "title": "Decide when and where a habit will happen",
+      "body": "Give a new habit a regular time and place so you can start without making a fresh scheduling decision each day.\n\nTry it with a five-minute writing session at your kitchen table after breakfast. If that slot keeps getting interrupted, pick a time you can reliably protect.",
+      "tags": [
+        "habits"
+      ],
+      "sourceUrl": "https://www.linkedin.com/posts/jamesclear_a-quick-and-easy-tip-for-building-habits-activity-7287836670056398849-Js1_"
+    },
+    {
+      "id": "b0002-books-0001",
+      "category": "books",
+      "source": "James Clear · Atomic Habits, Ch. 13",
+      "createdAt": "2026-11-23T14:00:00Z",
+      "title": "Make the first step take under two minutes",
+      "body": "Shrink a new habit to an action you can start in under two minutes. If you want to practice drawing, make the first step opening your sketchbook and drawing one line.\n\nTry it today. Pick one habit you keep postponing and write down the smallest action that gets it underway.",
+      "tags": [
+        "habits"
+      ],
+      "sourceUrl": "https://jamesclear.com/how-to-stop-procrastinating"
+    },
+    {
+      "id": "b0002-books-0002",
+      "category": "books",
+      "source": "Greg McKeown · Essentialism, Ch. 1",
+      "createdAt": "2026-11-23T14:05:00Z",
+      "title": "Name the trade-off before saying yes",
+      "body": "A new commitment takes time and energy away from something else. Before volunteering for an extra task, identify which existing commitment would move to make room for it.\n\nTry it today. Before your next yes, name what will move and decide whether the exchange is worth it.",
+      "tags": [
+        "priorities"
+      ],
+      "sourceUrl": "https://gregmckeown.com/preview/chpt1_essentialism.pdf"
+    },
+    {
+      "id": "b0002-books-0003",
+      "category": "books",
+      "source": "Cal Newport · Deep Work, Rule 1",
+      "createdAt": "2026-11-23T14:10:00Z",
+      "title": "Give focused work a calendar slot",
+      "body": "Set aside a block for one mentally demanding task and reduce interruptions ahead of time. For example, use 30 minutes to draft an argument with messages muted and only your notes open.\n\nTry it today. Schedule one block and write down the concrete result you want by the end.",
+      "tags": [
+        "focus"
+      ],
+      "sourceUrl": "https://calnewport.com/the-book-facebook-doesnt-want-you-to-read/"
+    },
+    {
+      "id": "b0002-books-0004",
+      "category": "books",
+      "source": "BJ Fogg · Tiny Habits, Ch. 5",
+      "createdAt": "2026-11-23T14:15:00Z",
+      "title": "Acknowledge a small win as it happens",
+      "body": "Fogg pairs a tiny action with an existing routine and a brief celebration. After closing your laptop for the day, put one loose item back where it belongs and take a second to enjoy having cleared a little space.\n\nTry it today. Choose a small gesture that feels genuine and do it immediately after your new action.",
+      "tags": [
+        "behavior-design"
+      ],
+      "sourceUrl": "https://tinyhabits.com/wp-content/uploads/2021/02/The-Official-Tiny-Habits-Toolkit-by-BJ-Fogg-Paperback-Edition.pdf"
+    },
+    {
+      "id": "b0002-books-0005",
+      "category": "books",
+      "source": "Cal Newport · Deep Work, Rule 1",
+      "createdAt": "2026-11-23T14:20:00Z",
+      "title": "Give unfinished work a place to go",
+      "body": "A shutdown ritual gives open tasks a place to live when the workday ends. Check your calendar and task list, capture any loose ends, and decide where to resume tomorrow.\n\nTry it today. Write one next action for the work you plan to pick up first.",
+      "tags": [
+        "shutdown-ritual"
+      ],
+      "sourceUrl": "https://calnewport.com/drastically-reduce-stress-with-a-work-shutdown-ritual/"
+    },
+    {
+      "id": "b0001-books-0102",
+      "category": "books",
+      "source": "Thinking, Fast and Slow · Part 3",
+      "createdAt": "2026-11-16T09:00:00Z",
+      "title": "Regression to the mean fools good managers",
+      "body": "Extreme results tend to be followed by less extreme ones, even with no intervention.\n- Praise after a great quarter often precedes a weaker one.\n- Punishment after a bad one often precedes improvement.\n👉 Judge a change by the trend across many periods, not by the last one.",
+      "tags": [
+        "cognition",
+        "decisions"
+      ]
+    }
+  ]
+}

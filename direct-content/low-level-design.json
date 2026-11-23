@@ -1,0 +1,54 @@
+{
+  "posts": [
+    {
+      "id": "linkedin-lld-0001",
+      "category": "lld",
+      "source": "Addy Osmani · LinkedIn",
+      "createdAt": "2026-11-23T15:00:00Z",
+      "title": "Extract shared React behavior into a custom hook",
+      "body": "When components repeat the same stateful behavior, a custom hook can share that logic while leaving each component in charge of rendering. For example, two screens can reuse subscription setup and cleanup while presenting different controls.",
+      "tags": [
+        "react-design"
+      ],
+      "sourceUrl": "https://www.linkedin.com/posts/addyosmani_softwareengineering-programming-javascript-activity-7400073499291152384-2I_g"
+    },
+    {
+      "id": "b0001-lld-0101",
+      "category": "lld",
+      "source": "LLD · Thread-safe singleton",
+      "createdAt": "2026-11-12T09:05:00Z",
+      "title": "Double-checked locking is only right with volatile",
+      "body": "Lazy singletons with double-checked locking look safe. Without a volatile field, a thread can see a partly constructed object.\n- The write to the reference can be reordered before the constructor's writes.\n- `volatile` adds the happens-before edge that makes publication safe.\n👉 Or use the initialization-on-demand holder idiom and skip the locking entirely.",
+      "tags": [
+        "java",
+        "concurrency",
+        "singleton"
+      ]
+    },
+    {
+      "id": "b0001-lld-0102",
+      "category": "lld",
+      "source": "LLD · Rate limiter design",
+      "createdAt": "2026-11-12T09:10:00Z",
+      "title": "Token bucket vs sliding window: pick by burst policy",
+      "body": "Both enforce a rate. They differ in what a burst looks like to the client.\n- Token bucket allows bounded bursts up to bucket size.\n- Sliding window log is exact but memory heavy; sliding counter approximates it.\n👉 State the burst policy in the interview before the data structure.",
+      "tags": [
+        "lld",
+        "rate-limiting"
+      ]
+    },
+    {
+      "id": "b0001-lld-0103",
+      "category": "lld",
+      "source": "LLD · Observer with lifetimes",
+      "createdAt": "2026-11-13T09:00:00Z",
+      "title": "Observers that outlive their subscribers leak",
+      "body": "A subject holding strong references to listeners keeps dead UI or service objects alive.\n- Hold listeners through weak references, or require explicit unsubscribe.\n- Notify over a snapshot copy so listeners can unsubscribe during dispatch.\n👉 Iterating the live list while a listener removes itself is a classic ConcurrentModification bug.",
+      "tags": [
+        "lld",
+        "observer",
+        "memory"
+      ]
+    }
+  ]
+}
