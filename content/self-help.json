@@ -1,6 +1,48 @@
 {
   "posts": [
     {
+      "id": "as-a-man-thinketh-guide-1",
+      "category": "books",
+      "source": "James Allen · Thought and Character",
+      "createdAt": "2026-11-23T16:00:00Z",
+      "title": "Notice which repeated thoughts shape your actions",
+      "body": "Allen asks readers to observe how repeated thinking influences conduct. Use the idea to examine a pattern you can act on, while recognizing that circumstances also shape the choices available to you.\n\nTry it: Write down one recurring thought before a task you avoid. Write one small action that would give you better evidence.",
+      "tags": [
+        "reflection",
+        "book-guide"
+      ],
+      "sourceUrl": "https://www.gutenberg.org/ebooks/4507",
+      "guideUrl": "https://github.com/mitran27/boomscroll-content/blob/main/content/books/as-a-man-thinketh/boomscroll-guide.pdf"
+    },
+    {
+      "id": "as-a-man-thinketh-guide-2",
+      "category": "books",
+      "source": "James Allen · Thought and Purpose",
+      "createdAt": "2026-11-23T16:00:00Z",
+      "title": "Give your attention a purpose for the day",
+      "body": "Allen connects purpose with the ability to direct attention. Make that concrete by choosing a result you can recognize and using it to decide which tasks deserve your next hour.\n\nTry it: Define a visible result for today, such as drafting the first paragraph. Put unrelated tasks on a list for later.",
+      "tags": [
+        "reflection",
+        "book-guide"
+      ],
+      "sourceUrl": "https://www.gutenberg.org/ebooks/4507",
+      "guideUrl": "https://github.com/mitran27/boomscroll-content/blob/main/content/books/as-a-man-thinketh/boomscroll-guide.pdf"
+    },
+    {
+      "id": "as-a-man-thinketh-guide-3",
+      "category": "books",
+      "source": "James Allen · Serenity",
+      "createdAt": "2026-11-23T16:00:00Z",
+      "title": "Pause before you answer under pressure",
+      "body": "Allen treats composure as something to practice. In a tense exchange, a pause can give you time to identify what was actually said before deciding how to reply.\n\nTry it: Before replying to a frustrating message, write down the one decision or question that deserves an answer. Draft the reply around that.",
+      "tags": [
+        "reflection",
+        "book-guide"
+      ],
+      "sourceUrl": "https://www.gutenberg.org/ebooks/4507",
+      "guideUrl": "https://github.com/mitran27/boomscroll-content/blob/main/content/books/as-a-man-thinketh/boomscroll-guide.pdf"
+    },
+    {
       "id": "linkedin-books-0001",
       "category": "books",
       "source": "James Clear · LinkedIn",

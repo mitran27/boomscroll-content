@@ -1,0 +1,88 @@
+{
+  "posts": [
+    {
+      "id": "ddia-guide-1",
+      "category": "sd",
+      "source": "DDIA (1st ed.) · 3 · Storage and Retrieval",
+      "createdAt": "2026-11-23T16:00:00Z",
+      "title": "Pick an index for the queries you actually run",
+      "body": "Compare a page-based tree with a log-structured design. A tree keeps ordered keys searchable in pages. A log-structured design collects writes in sorted runs and merges them later, shifting some cost to background compaction.\n\nDesign check: Compare a point lookup, a time-range scan, and a sustained write burst. Measure p99 latency while compaction is running.",
+      "tags": [
+        "ddia",
+        "book-guide"
+      ],
+      "sourceUrl": "https://www.scylladb.com/wp-content/uploads/ScyllaDB-Designing-Data-Intensive-Applications.pdf",
+      "guideUrl": "https://github.com/mitran27/boomscroll-content/blob/main/content/books/ddia/boomscroll-guide.pdf"
+    },
+    {
+      "id": "ddia-guide-2",
+      "category": "sd",
+      "source": "DDIA (1st ed.) · 3 · Storage and Retrieval",
+      "createdAt": "2026-11-23T16:00:00Z",
+      "title": "Give analytical scans a different layout",
+      "body": "A query that aggregates three fields across millions of rows can read less data when values for each field are stored together. Row-oriented storage fits queries that usually load or update most fields of a single record.\n\nDesign check: Compare fetching one invoice with calculating monthly revenue across every invoice. List the bytes each query actually needs.",
+      "tags": [
+        "ddia",
+        "book-guide"
+      ],
+      "sourceUrl": "https://www.scylladb.com/wp-content/uploads/ScyllaDB-Designing-Data-Intensive-Applications.pdf",
+      "guideUrl": "https://github.com/mitran27/boomscroll-content/blob/main/content/books/ddia/boomscroll-guide.pdf"
+    },
+    {
+      "id": "ddia-guide-3",
+      "category": "sd",
+      "source": "DDIA (1st ed.) · 5 · Replication",
+      "createdAt": "2026-11-23T16:00:00Z",
+      "title": "Decide what a write acknowledgment promises",
+      "body": "With asynchronous replication, a leader can acknowledge a write before followers receive it. A promoted follower can lack that write. Waiting for a replica strengthens the acknowledgment but adds latency and can block writes when the required replica is unavailable.\n\nDesign check: Take the leader offline immediately after it acknowledges a write. State which copies must contain the write after failover.",
+      "tags": [
+        "ddia",
+        "book-guide"
+      ],
+      "sourceUrl": "https://www.scylladb.com/wp-content/uploads/ScyllaDB-Designing-Data-Intensive-Applications.pdf",
+      "guideUrl": "https://github.com/mitran27/boomscroll-content/blob/main/content/books/ddia/boomscroll-guide.pdf"
+    },
+    {
+      "id": "ddia-guide-4",
+      "category": "sd",
+      "source": "DDIA (1st ed.) · 5 · Replication",
+      "createdAt": "2026-11-23T16:00:00Z",
+      "title": "Let users read their own writes",
+      "body": "A follower can serve an older version immediately after the leader accepts an update. Where users expect to see their own changes, route those reads to the leader or require a follower to catch up to the recorded write position.\n\nDesign check: Save a profile change and immediately reload from a lagging replica. Specify which guarantee the user should see.",
+      "tags": [
+        "ddia",
+        "book-guide"
+      ],
+      "sourceUrl": "https://www.scylladb.com/wp-content/uploads/ScyllaDB-Designing-Data-Intensive-Applications.pdf",
+      "guideUrl": "https://github.com/mitran27/boomscroll-content/blob/main/content/books/ddia/boomscroll-guide.pdf"
+    },
+    {
+      "id": "ddia-guide-5",
+      "category": "sd",
+      "source": "DDIA (1st ed.) · 8 · The Trouble with Distributed Systems",
+      "createdAt": "2026-11-23T16:00:00Z",
+      "title": "Treat a timeout as an unknown outcome",
+      "body": "When a service times out, the request might never have arrived, or the operation might have finished before the reply was lost. For operations that must happen once, use a stable request ID and record it alongside the effect so a retry can return the recorded result.\n\nDesign check: Drop the response after a payment is recorded. Verify that resending the request returns the original result without creating a second charge.",
+      "tags": [
+        "ddia",
+        "book-guide"
+      ],
+      "sourceUrl": "https://www.scylladb.com/wp-content/uploads/ScyllaDB-Designing-Data-Intensive-Applications.pdf",
+      "guideUrl": "https://github.com/mitran27/boomscroll-content/blob/main/content/books/ddia/boomscroll-guide.pdf"
+    },
+    {
+      "id": "ddia-guide-6",
+      "category": "sd",
+      "source": "DDIA (1st ed.) · 8 · The Trouble with Distributed Systems",
+      "createdAt": "2026-11-23T16:00:00Z",
+      "title": "Use fencing tokens to reject stale workers",
+      "body": "A worker can pause long enough for its lease to expire, then resume after a replacement has acquired the lease. A monotonically increasing fencing token lets the resource reject an older worker after it has seen a newer token.\n\nDesign check: Pause worker A, promote worker B, then let A resume. Verify that the storage layer rejects A's write after accepting B's.",
+      "tags": [
+        "ddia",
+        "book-guide"
+      ],
+      "sourceUrl": "https://www.scylladb.com/wp-content/uploads/ScyllaDB-Designing-Data-Intensive-Applications.pdf",
+      "guideUrl": "https://github.com/mitran27/boomscroll-content/blob/main/content/books/ddia/boomscroll-guide.pdf"
+    }
+  ]
+}
