@@ -1,0 +1,127 @@
+{
+  "posts": [
+    {
+      "id": "linkedin-sd-0001",
+      "category": "sd",
+      "source": "Mostafa Hosseinzadeh · LinkedIn",
+      "createdAt": "2026-11-23T15:00:00Z",
+      "title": "Choose replication by its failure behavior",
+      "body": "Start with the behavior the application needs when a server or region goes offline. A single leader gives writes one coordination point. Multiple leaders can take writes in different locations, with a plan for reconciling conflicting changes.\n\nDesign exercise: Trace what happens when two regions edit the same profile while disconnected.",
+      "tags": [
+        "replication"
+      ],
+      "sourceUrl": "https://www.linkedin.com/posts/mostafa-hosseinzadeh_distributedsystems-dataengineering-softwarearchitecture-activity-7502931918707912704-qXta"
+    },
+    {
+      "id": "b0001-sd-0101",
+      "category": "sd",
+      "source": "DDIA · Ch. 7 Transactions",
+      "createdAt": "2026-11-10T09:00:00Z",
+      "title": "Snapshot isolation still allows write skew",
+      "body": "Snapshot isolation stops dirty reads and lost updates, but two transactions can read the same snapshot and write disjoint rows that together break an invariant.\n- Classic case: two doctors both check that another is on call, then both go off call.\n- Fixes: `SELECT FOR UPDATE` on a shared row, materialized conflicts, or serializable isolation (SSI).\n👉 Ask which invariant spans more than one row before you pick an isolation level.",
+      "tags": [
+        "transactions",
+        "isolation",
+        "ddia"
+      ]
+    },
+    {
+      "id": "b0001-sd-0102",
+      "category": "sd",
+      "source": "DDIA · Ch. 3 Storage engines",
+      "createdAt": "2026-11-10T09:05:00Z",
+      "title": "Write amplification is the real LSM cost",
+      "body": "LSM trees are fast at writes because they append and compact later. The price is that one logical write is rewritten many times.\n- Leveled compaction: lower read and space amplification, higher write amplification.\n- Size-tiered: cheaper writes, more files to read and more space used.\n👉 Pick the compaction strategy from your read-to-write ratio, not from benchmarks.",
+      "tags": [
+        "lsm",
+        "storage",
+        "compaction"
+      ]
+    },
+    {
+      "id": "b0001-sd-0103",
+      "category": "sd",
+      "source": "Kafka internals · Delivery semantics",
+      "createdAt": "2026-11-10T09:10:00Z",
+      "title": "Exactly-once is an end-to-end property",
+      "body": "Idempotent producers and transactions give exactly-once inside Kafka. They do not cover the side effect you run in your consumer.\n- Commit the offset and the state change in the same database transaction.\n- Or make the handler idempotent with a dedupe key.\n👉 If the sink is not transactional, the guarantee is at-least-once plus idempotency.",
+      "tags": [
+        "kafka",
+        "delivery",
+        "idempotency"
+      ]
+    },
+    {
+      "id": "b0001-sd-0104",
+      "category": "sd",
+      "source": "Consensus · Raft log",
+      "createdAt": "2026-11-11T09:00:00Z",
+      "title": "Why Raft only commits entries from the current term",
+      "body": "A leader must not count replicas for entries from earlier terms when deciding commit. A later leader can overwrite them.\n- Commit happens only when an entry from the current term is replicated to a majority.\n- Earlier entries then commit indirectly.\n👉 This rule is the one most reimplementations get wrong.",
+      "tags": [
+        "raft",
+        "consensus"
+      ]
+    },
+    {
+      "id": "b0001-sd-0105",
+      "category": "sd",
+      "source": "Designing a notification fan-out · Walkthrough",
+      "createdAt": "2026-11-11T09:05:00Z",
+      "title": "Fan-out at celebrity scale",
+      "body": "Pushing one post to 50M followers on write blows up the write path. Pulling on read blows up latency. Real systems do both, split by follower count.\n👉 Swipe for the hybrid design.",
+      "tags": [
+        "fan-out",
+        "feeds",
+        "walkthrough"
+      ],
+      "slides": [
+        {
+          "title": "The two extremes",
+          "body": "- Fan-out on write: fast reads, huge write burst per celebrity post\n- Fan-out on read: cheap writes, merge cost paid by every reader"
+        },
+        {
+          "title": "Where it breaks",
+          "body": "A single celebrity can produce 50M queue messages. Your queues and workers become the bottleneck, not the database."
+        },
+        {
+          "title": "Hybrid by threshold",
+          "body": "Users under a follower threshold are pushed to follower timelines. Celebrity posts are pulled and merged at read time.",
+          "code": "if followers(author) < T: push(post, followers)\nelse: mark_celebrity(post)  # merged at read"
+        },
+        {
+          "title": "Protect the merge",
+          "body": "Cache the celebrity timeline slices per user. Bound the merge to the last N posts so read cost stays flat."
+        },
+        {
+          "title": "Takeaway",
+          "body": "**Pick the write or read path per segment.** One global strategy fails at one end of the distribution."
+        }
+      ]
+    },
+    {
+      "id": "b0001-sd-0106",
+      "category": "sd",
+      "source": "Consistent hashing · Bounded loads",
+      "createdAt": "2026-11-12T09:00:00Z",
+      "title": "Consistent hashing with bounded loads",
+      "body": "Plain consistent hashing gives balanced keys on average, but a hot key or uneven node still overloads one node.\n- Cap each node at a load factor, such as 1.25 times the mean.\n- A key that finds its node full moves to the next node on the ring.\n👉 Lets you smooth load without losing most of the cache locality.",
+      "tags": [
+        "hashing",
+        "load-balancing"
+      ]
+    },
+    {
+      "id": "b0001-sd-0107",
+      "category": "sd",
+      "source": "Designing Data-Intensive Applications · Ch. 1",
+      "createdAt": "2026-11-15T09:05:00Z",
+      "title": "Reliability is about faults you expect",
+      "body": "A reliable system keeps working correctly when things go wrong, even when faults are common.\n- Faults are inevitable: hardware, software bugs, and human error.\n- Design so that faults are contained and recovery is routine.\n👉 Practice the failure before the incident does.",
+      "tags": [
+        "reliability",
+        "ddia"
+      ]
+    }
+  ]
+}

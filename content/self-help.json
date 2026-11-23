@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "id": "linkedin-books-0001",
+      "category": "books",
+      "source": "James Clear · LinkedIn",
+      "createdAt": "2026-11-23T15:00:00Z",
+      "title": "Decide when and where a habit will happen",
+      "body": "Give a new habit a regular time and place so you can start without making a fresh scheduling decision each day.\n\nTry it with a five-minute writing session at your kitchen table after breakfast. If that slot keeps getting interrupted, pick a time you can reliably protect.",
+      "tags": [
+        "habits"
+      ],
+      "sourceUrl": "https://www.linkedin.com/posts/jamesclear_a-quick-and-easy-tip-for-building-habits-activity-7287836670056398849-Js1_"
+    },
+    {
       "id": "b0002-books-0001",
       "category": "books",
       "source": "James Clear · Atomic Habits, Ch. 13",
@@ -59,6 +71,18 @@
         "shutdown-ritual"
       ],
       "sourceUrl": "https://calnewport.com/drastically-reduce-stress-with-a-work-shutdown-ritual/"
+    },
+    {
+      "id": "b0001-books-0102",
+      "category": "books",
+      "source": "Thinking, Fast and Slow · Part 3",
+      "createdAt": "2026-11-16T09:00:00Z",
+      "title": "Regression to the mean fools good managers",
+      "body": "Extreme results tend to be followed by less extreme ones, even with no intervention.\n- Praise after a great quarter often precedes a weaker one.\n- Punishment after a bad one often precedes improvement.\n👉 Judge a change by the trend across many periods, not by the last one.",
+      "tags": [
+        "cognition",
+        "decisions"
+      ]
     }
   ]
 }

@@ -1,6 +1,8 @@
 {
   "batches": [
-    "batch-0001.json",
-    "batch-0002.json"
+    "content/self-help.json?v=fcb786cc12bd",
+    "content/system-design.json?v=241a2301d6f5",
+    "content/low-level-design.json?v=dcbdb8710da8",
+    "content/ai-cv-llm.json?v=2be3f043ee67"
   ]
 }
